@@ -38,15 +38,15 @@
 	devolva f [n]
    ``` 
    
-1. Monte uma tabela com a contabilização das execuções anteriores (número de iterações e número de instruções) e com os resultados das execuções. As linhas da tabela são os algoritmos implementados, as colunas os valores para testar e contabilizar.
+2. Monte uma tabela com a contabilização das execuções anteriores (número de iterações e número de instruções) e com os resultados das execuções. As linhas da tabela são os algoritmos implementados, as colunas os valores para testar e contabilizar.
 
-1. Resolva o problema da mochila conforme o enuciado em sala de aula. 
+3. Resolva o problema da mochila conforme o enuciado em sala de aula. 
 
    1. Ache uma solução que testa todas as combinações possíveis e seleciona a melhor, aplicando divisão-e-conquista ou não;
    1. Contabilize o número de iterações;
    1. Implemente e teste sua solução, para o caso exposto em aula e outros de mesmo porte (;-)).
 
-1. Resolva o problema da mochila utilizando o algoritmo com programação dinâmica visto em aula, teste e contabilize o número de iterações.
+4. Resolva o problema da mochila utilizando o algoritmo com programação dinâmica visto em aula, teste e contabilize o número de iterações.
 
 ```javascript
 Inteiro backPackPD(Inteiro N, Inteiro C, Tupla<Inteiro, Inteiro> itens)
