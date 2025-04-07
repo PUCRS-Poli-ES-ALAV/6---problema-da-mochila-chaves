@@ -1,6 +1,9 @@
+import time
+
 def mochila(N, C, itens):
     maxTab = [[0] * (C + 1) for _ in range(N + 1)]
     iteracoes = 0
+    instrucoes = 0
 
     for i in range(1, N + 1):
         for j in range(1, C + 1):
@@ -10,8 +13,9 @@ def mochila(N, C, itens):
                 maxTab[i][j] = max(maxTab[i-1][j], valor + maxTab[i-1][j - peso])
             else:
                 maxTab[i][j] = maxTab[i-1][j]
+            instrucoes += 3 
 
-    return maxTab[N][C], iteracoes  
+    return maxTab[N][C], iteracoes, instrucoes  
 
 
 def main():
@@ -30,25 +34,22 @@ def main():
         }
     ]
 
+    print("Dinamico\n----------------------------------------------------------------------------------------------------")
+    print("Test Case                  Result   Iterations Instructions     Time (s)")
+    print("----------------------------------------------------------------------------------------------------")
     for caso in casos_teste:
         N = len(caso["pesos"])
         C = caso["C"]
         itens = [(0, 0)] + list(zip(caso["pesos"], caso["valores"]))
-        
-        valor_maximo, iteracoes = mochila(N, C, itens)
-        print(f"{caso['nome']}:")
-        print(f"  Número de itens: {N}")
-        print(f"  Capacidade: {C}")
-        print(f"  Valor máximo: {valor_maximo}")
-        print(f"  Iterações: {iteracoes}")
-        print("-" * 40)
+
+        inicio = time.time()
+        valor_maximo, iteracoes, instrucoes = mochila(N, C, itens)
+        fim = time.time()
+        tempo = fim - inicio
+
+        nome_formatado = f'{caso["nome"]} (N={N}, C={C})'
+        print(f"{nome_formatado:<25} {valor_maximo:>6}    {iteracoes:>10}    {instrucoes:>11}     {tempo:.9f} s")
+
+    print("----------------------------------------------------------------------------------------------------")
 
 main()
-
-# +--------+------------------+------------+----------------+------------+
-# | Caso   | Número de Itens  | Capacidade | Valor Máximo   | Iterações  |
-# +--------+------------------+------------+----------------+------------+
-# | Caso 1 | 10               | 165        | 309            | 1650       |
-# | Caso 2 | 6                | 190        | 150            | 1140       |
-# +--------+------------------+------------+----------------+------------+
-
