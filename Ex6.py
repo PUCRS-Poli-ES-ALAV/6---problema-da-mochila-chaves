@@ -15,6 +15,8 @@
 # • Remoção: ED(S, T, i-1, j) + 1
 # • Retorne a que resultar em menor custo
 
+import time
+
 contador = 0
 
 def ED(S, T, i, j):
@@ -45,29 +47,37 @@ def main():
     print("----------------------------------------------------------------------------------------------------")
     # S = input("Digite a string inicial: ")
     # T = input("Digite a string final: ")
-    # S = "Casablanca"
-    # T = "Portentoso"
-    S = ("Maven, a Yiddish word meaning accumulator of knowledge, began as an attempt to "
-     "simplify the build processes in the Jakarta Turbine project. There were several "
-     "projects, each with their own Ant build files, that were all slightly different. "
-     "JARs were checked into CVS. We wanted a standard way to build the projects, a clear "
-     "definition of what the project consisted of, an easy way to publish project information "
-     "and a way to share JARs across several projects. The result is a tool that can now be "
-     "used for building and managing any Java-based project. We hope that we have created "
-     "something that will make the day-to-day work of Java developers easier and generally help "
-     "with the comprehension of any Java-based project.")
-    T = ("This post is not about deep learning. But it could be might as well. This is the power of "
-     "kernels. They are universally applicable in any machine learning algorithm. Why you might "
-     "ask? I am going to try to answer this question in this article. "
-     "Go to the profile of Marin Vlastelica Pogančić. "
-     "Marin Vlastelica Pogančić Jun")
+    S = "Casablanca"
+    T = "Portentoso"
+    # S = ("Maven, a Yiddish word meaning accumulator of knowledge, began as an attempt to "
+    #  "simplify the build processes in the Jakarta Turbine project. There were several "
+    #  "projects, each with their own Ant build files, that were all slightly different. "
+    #  "JARs were checked into CVS. We wanted a standard way to build the projects, a clear "
+    #  "definition of what the project consisted of, an easy way to publish project information "
+    #  "and a way to share JARs across several projects. The result is a tool that can now be "
+    #  "used for building and managing any Java-based project. We hope that we have created "
+    #  "something that will make the day-to-day work of Java developers easier and generally help "
+    #  "with the comprehension of any Java-based project.")
+    # T = ("This post is not about deep learning. But it could be might as well. This is the power of "
+    #  "kernels. They are universally applicable in any machine learning algorithm. Why you might "
+    #  "ask? I am going to try to answer this question in this article. "
+    #  "Go to the profile of Marin Vlastelica Pogančić. "
+    #  "Marin Vlastelica Pogančić Jun")
     print(f"S: {S}")
     print(f"T: {T}")
     i = len(S) - 1
     j = len(T) - 1
+    # Medir o tempo de execução
+    inicio = time.time()  # Tempo inicial
     resultado = ED(S, T, i, j)
+    fim = time.time()  # Tempo final
+
+    # Calcular o tempo total em milissegundos
+    tempo_execucao = (fim - inicio) * 1000
+
     print(f"Resultado ED: {resultado}")
     print(f"Nmr interações: {contador}")
+    print(f"Tempo de execução: {tempo_execucao:.2f} ms")  # Exibe o tempo de execução em milissegundos
 
 if __name__ == "__main__":
     main()
